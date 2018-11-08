@@ -12,7 +12,9 @@ Cart.prototype.addItem = function(product, quantity) {
 };
 
 Cart.prototype.saveToLocalStorage = function() {
-  // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  // TODO: DONE Fill in this instance method to save the contents of the cart to localStorage
+  var cartItems = JSON.stringify(cart.items);
+  localStorage.setItem('cartItems', cartItems);
 };
 
 Cart.prototype.removeItem = function(item) {
