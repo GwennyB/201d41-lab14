@@ -22,7 +22,7 @@ function populateForm() {
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
 
-  // TODO: DONE DONE Prevent the page from reloading
+  // TODO: DONE Prevent the page from reloading
   event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
@@ -34,9 +34,14 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
-  // TODO: get the quantity
+  // TODO: DONE suss out the item picked from the select list
+  var selectedItem = event.target.items.value;
+  console.log('selecteditem', selectedItem);
+  // TODO: DONE get the quantity
+  var selectedQuantity = event.target.quantity.value;
+  console.log('selectedQuantity', selectedQuantity);
   // TODO: using those, add one item to the Cart
+  Cart.prototype.addItem(selectedItem, selectedQuantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
