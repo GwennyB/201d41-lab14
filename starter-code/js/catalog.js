@@ -9,12 +9,17 @@ var cart = new Cart([]);
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
   //TODO: DONE Add an <option> tag inside the form's select for each product 
-  var selectElement = document.getElementById('items');
-  for (var i in Product.allProducts) {
-    document.createElement('option').value = Product.allProducts[i].name;
-    selectElement.appendChild();
-  }
+  var selectEl = document.getElementById('items');
+  selectEl.name = 'selectItems';
+  var qtyEl = document.getElementById('quantity');
+  qtyEl.name = 'qtyItems';
 
+  for (var i in Product.allProducts) {
+    var shopList = document.createElement('option');
+    shopList.textContent = Product.allProducts[i].name;
+    selectEl.appendChild(shopList);
+
+  }
 }
 
 // When someone submits the form, we need to add the selected item to the cart
@@ -30,16 +35,15 @@ function handleSubmit(event) {
   updateCounter();
   updateCartPreview();
 
+  
 }
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: DONE suss out the item picked from the select list
   var selectedItem = event.target.items.value;
-  console.log('selecteditem', selectedItem);
   // TODO: DONE get the quantity
   var selectedQuantity = event.target.quantity.value;
-  console.log('selectedQuantity', selectedQuantity);
   // TODO: using those, add one item to the Cart
   Cart.prototype.addItem(selectedItem, selectedQuantity);
 }
